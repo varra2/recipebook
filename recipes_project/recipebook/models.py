@@ -5,8 +5,8 @@ from django.db import models
 class Meal(models.Model):
     name = models.CharField("Название", max_length=150)
     recipe = models.TextField("Рецепт")
-    ingridients = models.ManyToManyField(
-        "Ingridient", verbose_name="Ингридиенты", related_name="meals"
+    ingredients = models.ManyToManyField(
+        "Ingredient", verbose_name="Ингредиенты", related_name="meals"
     )
 
     def __str__(self):
@@ -17,12 +17,12 @@ class Meal(models.Model):
         verbose_name_plural = "Блюда"
 
 
-class Ingridient(models.Model):
-    name = models.CharField("Название ингридиента", max_length=150)
+class Ingredient(models.Model):
+    name = models.CharField("Название ингредиента", max_length=150)
 
     def __str__(self):
         return f"{self.name}"
 
     class Meta:
-        verbose_name = "Ингридиент"
-        verbose_name_plural = "Ингридиенты"
+        verbose_name = "Ингредиент"
+        verbose_name_plural = "Ингредиенты"
