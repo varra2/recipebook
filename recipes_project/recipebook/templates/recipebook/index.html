@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>Книга рецептов</title>
+</head>
+
+<body>
+    <h1>Книга рецептов</h1>
+
+    {% for recipe in recipes %}
+    <br>
+    <h2>{{ recipe.name }}</h2>
+    <br>
+    {{ recipe.ingredients.all|join:", " }}
+    <br>
+    {{recipe.recipe}}
+    {% endfor %}
+</body>
+
+</html>
