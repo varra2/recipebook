@@ -5,7 +5,15 @@
 </head>
 
 <body>
-    <h1>Книга рецептов</h1>
+    <a href="">
+        <h1>Книга рецептов</h1>
+    </a>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        Какой рецепт Вы ищете? <input type="text" name="lookup_recipe">
+        <input type="submit" value="Submit">
+    </form>
 
     {% for recipe in recipes %}
     <br>
