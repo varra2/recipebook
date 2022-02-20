@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | Изменение книги рецептов{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Книга рецептов: страница шеф-повара</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

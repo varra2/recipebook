@@ -5,6 +5,8 @@
 </head>
 
 <body>
+    <p align="right"><a href="/admin">Добавить/изменить рецепт</a></p>
+
     <a href="">
         <h1>Книга рецептов</h1>
     </a>
@@ -13,7 +15,7 @@
         {% csrf_token %}
         Какой рецепт Вы ищете? <input type="text" name="lookup_recipe">
 
-        <input type="submit" value="Submit">
+        <input type="submit" name="Submit">
     </form>
 
     <form action="" method="post">
