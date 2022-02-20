@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from recipebook.admin import chef_page
 
 urlpatterns = [
     path("", include("recipebook.urls")),
-    path("admin/", admin.site.urls),
+    path("admin/", chef_page.urls),
 ]
