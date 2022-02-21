@@ -1,15 +1,27 @@
 version: '3.8'
 services:
 
+  #Database
   db:
     image: postgres:14-alpine
     environment:
       - POSTGRES_USER=thechef
       - POSTGRES_PASSWORD=letscook
       - POSTGRES_DB=recipes_db
-    volumes:
-      - data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  #Application
+  app:
+    build: .
+    environment:
+      - DATABASE_URL=postgres://thechef:letscook@db:5432/recipes_db
+      - PORT=8000
+    volumes:
+      - .:/recipes_project
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 volumes:
   data:
