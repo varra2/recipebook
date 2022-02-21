@@ -16,12 +16,8 @@ services:
     build: .
     environment:
       - DATABASE_URL=postgres://thechef:letscook@db:5432/recipes_db
-      - PORT=8000
-    volumes:
-      - .:/recipes_project
     ports:
-      - "8000:8000"
+      - "8080:8080"
     depends_on:
       - db
-volumes:
-  data:
+    command: python manage.py runserver 0.0.0.0:8080

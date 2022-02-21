@@ -8,4 +8,3 @@ RUN pip install -r requirements.txt
 RUN mkdir /recipes_project
 WORKDIR /recipes_project
 COPY ./recipes_project /recipes_project
-COPY boot.sh .
