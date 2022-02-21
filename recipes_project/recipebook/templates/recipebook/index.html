@@ -1,3 +1,6 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
 <html>
 
 <head>
@@ -5,36 +8,51 @@
 </head>
 
 <body>
-    <p align="right"><a href="/admin">Добавить/изменить рецепт</a></p>
+    <div class="container">
+        <p align="right"><a href="/admin">Добавить/изменить рецепт</a></p>
 
-    <a href="">
-        <h1>Книга рецептов</h1>
-    </a>
-    <br>
-    <form action="" method="post">
-        {% csrf_token %}
-        Какой рецепт Вы ищете? <input type="text" name="lookup_recipe">
+        <a href="">
+            <h1>Книга рецептов</h1>
+        </a>
 
-        {% csrf_token %}
-        <label for="lookup_ingredient">Ищете блюдо с определённым ингридиентом?</label>
+        <br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="input" class="col-sm-4 col-form-label">Какой рецепт Вы ищете?</label>
+                <div class="col-sm-5"><input class="form-control" type="text" name="lookup_recipe"></div>
+            </div>
+            <div class="form-group row">
+                <label for="input" class="col-sm-4 col-form-label">Ищете блюдо с определённым ингредиентом?</label>
+                <div class="col-sm-5"> <select class="form-select" name="lookup_ingredient" id="lookup_ingredient">
+                        <option disabled selected value></option>
+                        {% for ingredient in ingredients %}
+                        <option value="{{ingredient.id}}">{{ingredient.name}}</option>
+                        {% endfor %}
+                    </select></div>
+            </div>
+            <input type="submit" value="Искать" name="Submit" class="btn btn-primary">
+        </form>
 
-        <select name="lookup_ingredient" id="lookup_ingredient">
-            <option disabled selected value></option>
-            {% for ingredient in ingredients %}
-            <option value="{{ingredient.id}}">{{ingredient.name}}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" name="Submit">
-    </form>
+        {% for recipe in recipes %}
 
-    {% for recipe in recipes %}
-    <br>
-    <h2>{{ recipe.name }}</h2>
-    <br>
-    {{ recipe.ingredients.all|join:", " }}
-    <br>
-    {{recipe.recipe}}
-    {% endfor %}
+        <div class="card border-primary mb-3" style="max-width: 80rem;">
+            <br>
+            <div class="card-header">
+            </div>
+            <div class="card-body text-dark">
+                <h3 class="card-title">{{ recipe.name }}</h5>
+                    <ul class="list-group list-group-horizontal">
+                        {% for i in recipe.ingredients.all %}
+                        <li class="list-group-item">{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p class="card-text">{{recipe.recipe}}</p>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
 </body>
 
 </html>

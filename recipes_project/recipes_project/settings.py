@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "recipebook.apps.RecipebookConfig",
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [
