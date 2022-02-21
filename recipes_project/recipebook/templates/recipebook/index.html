@@ -15,14 +15,11 @@
         {% csrf_token %}
         Какой рецепт Вы ищете? <input type="text" name="lookup_recipe">
 
-        <input type="submit" name="Submit">
-    </form>
-
-    <form action="" method="post">
         {% csrf_token %}
         <label for="lookup_ingredient">Ищете блюдо с определённым ингридиентом?</label>
 
         <select name="lookup_ingredient" id="lookup_ingredient">
+            <option disabled selected value></option>
             {% for ingredient in ingredients %}
             <option value="{{ingredient.id}}">{{ingredient.name}}</option>
             {% endfor %}
